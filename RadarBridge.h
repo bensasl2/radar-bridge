@@ -19,8 +19,8 @@ extern "C" {
 #endif
 
 // Forward declarations instead of including <wx/glcanvas.h> or <wx/geometry.h>
-typedef struct wxGLContext wxGLContext;   // treat them as incomplete types
-typedef struct wxSize wxSize;
+typedef class wxGLContext wxGLContext;   // treat them as incomplete types
+typedef class wxSize wxSize;
 
 // Forward declare the interfaces
 struct IRadarAPI;
@@ -65,6 +65,9 @@ struct IRadarAPI {
     // Overlay registration
     virtual void RegisterOverlayRenderer(IRadarOverlay* overlay) = 0;
     virtual void UnregisterOverlayRenderer(IRadarOverlay* overlay) = 0;
+
+    virtual IRadarOverlay* GetOverlay() const = 0;
+
 };
 
 #ifdef __cplusplus
