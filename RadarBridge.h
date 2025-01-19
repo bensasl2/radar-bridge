@@ -21,6 +21,9 @@ extern "C" {
 // Forward declarations instead of including <wx/glcanvas.h> or <wx/geometry.h>
 typedef class wxGLContext wxGLContext;   // treat them as incomplete types
 typedef class wxSize wxSize;
+typedef class wxString wxString;
+typedef class wxVariant wxVariant;
+
 
 // Forward declare the interfaces
 struct IRadarAPI;
@@ -54,6 +57,11 @@ struct IRadarOverlay {
 struct IRadarAPI {
     virtual ~IRadarAPI() {}
 
+    virtual bool SetControl(const wxString& controlName, const wxVariant& value) = 0;
+    virtual wxVariant GetControl(const wxString& controlName) = 0;
+
+    virtual bool Transmit(bool enable) = 0;
+
     // Example: sets the radar range in NM
     virtual void SetRadarRangeNM(double range_nm) = 0;
     virtual double GetRadarRangeNM() const = 0;
@@ -67,6 +75,8 @@ struct IRadarAPI {
     virtual void UnregisterOverlayRenderer(IRadarOverlay* overlay) = 0;
 
     virtual IRadarOverlay* GetOverlay() const = 0;
+
+    virtual bool SelectRadarType(int type) = 0;
 
 };
 
