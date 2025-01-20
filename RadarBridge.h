@@ -47,6 +47,9 @@ struct IRadarOverlay {
     virtual void OnRadarOverlayRender(wxGLContext* pcontext,
                                       const wxSize* canvasSize,
                                       float radarRangePx) = 0;
+
+    // NEW: Called to handle mouse clicks in the radar overlay
+    virtual void OnMouseClick(int mouseX, int mouseY) = 0;
 };
 
 /**
