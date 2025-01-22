@@ -23,6 +23,7 @@ typedef class wxGLContext wxGLContext;   // treat them as incomplete types
 typedef class wxSize wxSize;
 typedef class wxString wxString;
 typedef class wxVariant wxVariant;
+typedef class wxMouseEvent wxMouseEvent;
 
 
 // Forward declare the interfaces
@@ -49,7 +50,7 @@ struct IRadarOverlay {
                                       float radarRangePx) = 0;
 
     // NEW: Called to handle mouse clicks in the radar overlay
-    virtual void OnMouseClick(int mouseX, int mouseY) = 0;
+    virtual void OnMouseClick(wxMouseEvent &event) = 0;
 };
 
 /**
